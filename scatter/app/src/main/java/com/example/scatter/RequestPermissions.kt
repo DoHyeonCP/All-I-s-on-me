@@ -23,6 +23,7 @@ public class RequestPermissions {
             if (shouldShowRequestPermissionRationale(activity , android.Manifest.permission.ACCESS_FINE_LOCATION)
                 && shouldShowRequestPermissionRationale(activity, android.Manifest.permission.ACCESS_COARSE_LOCATION)
                 && shouldShowRequestPermissionRationale(activity, android.Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+
             ) {
             } else {
                 // 권한에 대한 설명이 필요하지 않은 경우(이미 이전에 권한 요청을 했고 거부당함)
@@ -40,6 +41,25 @@ public class RequestPermissions {
                 requestPermissions(
                     activity,
                     arrayOf(android.Manifest.permission.ACCESS_BACKGROUND_LOCATION),
+                    LOCATION_PERMISSION_REQUEST_CODE
+                )
+            }
+        } else {
+
+        }
+    }
+    fun requestnotificationpermission(context: Context, activity : MainActivity){
+        if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // 권한이 허용되지 않은경우
+            if (shouldShowRequestPermissionRationale(activity, android.Manifest.permission.POST_NOTIFICATIONS)
+            ) {
+            } else {
+                // 권한에 대한 설명이 필요하지 않은 경우(이미 이전에 권한 요청을 했고 거부당함)
+                // 바로 권한 요청
+                requestPermissions(
+                    activity,
+                    arrayOf(android.Manifest.permission.POST_NOTIFICATIONS),
                     LOCATION_PERMISSION_REQUEST_CODE
                 )
             }

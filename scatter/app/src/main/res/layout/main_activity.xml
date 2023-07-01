@@ -24,23 +24,21 @@
 
         <ImageView
             android:id="@+id/jamsil_map"
-            android:layout_width="408dp"
-            android:layout_height="512dp"
+            android:layout_width="390dp"
+            android:layout_height="409dp"
             android:layout_marginTop="70dp"
-            app:layout_constraintBottom_toTopOf="@+id/text_head"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/jamsil_map" />
+
 
         <Button
             android:id="@+id/prediction"
             android:layout_width="410dp"
             android:layout_height="72dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="16dp"
             android:background="#E25822"
             android:text="예측된 인구혼잡 결과 보러가기"
             android:textColor="@color/white"
@@ -48,46 +46,28 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_head"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/text_head"
-            android:layout_width="150dp"
-            android:layout_height="160dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="104dp"
-            android:text="TextView"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/text_body"
-            android:layout_width="180dp"
+            android:layout_width="280dp"
             android:layout_height="160dp"
-            android:layout_marginEnd="66dp"
-            android:layout_marginBottom="104dp"
+            android:layout_marginEnd="56dp"
+            android:layout_marginBottom="112dp"
             android:text="TextView"
             android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/text_head" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
-<!--        <ImageView-->
-<!--            android:id="@+id/imageView4"-->
-<!--            android:layout_width="54dp"-->
-<!--            android:layout_height="64dp"-->
-<!--            app:srcCompat="@drawable/exit_unvisible"-->
-<!--            tools:layout_editor_absoluteX="341dp"-->
-<!--            tools:layout_editor_absoluteY="87dp" />-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/imageView4"-->
+        <!--            android:layout_width="54dp"-->
+        <!--            android:layout_height="64dp"-->
+        <!--            app:srcCompat="@drawable/exit_unvisible"-->
+        <!--            tools:layout_editor_absoluteX="341dp"-->
+        <!--            tools:layout_editor_absoluteY="87dp" />-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -105,3 +85,4 @@
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
+

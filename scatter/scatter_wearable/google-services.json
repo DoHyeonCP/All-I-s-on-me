@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1000465630851",
+    "project_id": "scatterwearable",
+    "storage_bucket": "scatterwearable.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1000465630851:android:f53199d59f59fb4ab97db6",
+        "android_client_info": {
+          "package_name": "com.example.scatter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1000465630851-9pq15hj50e0mqo2m8in397ivruujjg4b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIS7ybZ3G2KdgIja_CNhTZm5S-WzcRZgU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1000465630851-9pq15hj50e0mqo2m8in397ivruujjg4b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

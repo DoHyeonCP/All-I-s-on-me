@@ -6,6 +6,10 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
 
+
+// 배포전까지의 디버깅용
+// firebase는 배포하기전까진 여기서 Log에 나온 토근을 server에 직접입력하여
+// push알림을 받도록 해야함
 class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     companion object {

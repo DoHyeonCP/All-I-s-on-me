@@ -9,21 +9,14 @@ import org.eclipse.paho.client.mqttv3.*
 import com.example.scatter.FirebaseMessagingService
 import com.google.firebase.ktx.Firebase
 
-
-class Mqtt  {
+class Mqtt {
     private lateinit var mqttClient : MqttClient
-    private lateinit var firebasemessagingservice : FirebaseMessagingService
-
 
 
     fun sendLocationToServer(latitude: Double, longitude: Double) {
-        val brokerUrl = "tcp://192.168.143.180:1883"
+
+        val brokerUrl = "tcp://115.21.135.45:1883"
         val clientId = "Phone_GPS"
-
-        firebasemessagingservice = FirebaseMessagingService()
-        firebasemessagingservice
-        val firebaseToken = firebasemessagingservice.firebasetoken
-
 //        val payload = "disconnected".toByteArray(Charsets.UTF_8)
         try {
             mqttClient = MqttClient(brokerUrl, clientId, MemoryPersistence())
@@ -34,10 +27,15 @@ class Mqtt  {
         } catch(ex: MqttException){
             ex.printStackTrace()
         }
-        val topic = "location"
-        val message = "$latitude" + "," +"$longitude"
-        val mqttMessage = MqttMessage(message.toByteArray())
-        Log.i("firebasetoken", "$firebaseToken")
-        mqttClient.publish(topic, mqttMessage)
+
+        FirebaseMessaging.getInstance().token
+            .addOnSuccessListener { token ->
+                var firebasetoken = token
+                val topic = "location"
+                var message = "$latitude" + "," +"$longitude" + "," + "$firebasetoken"
+                Log.i("informatio", message)
+                var mqttMessage = MqttMessage(message.toByteArray())
+                mqttClient.publish(topic, mqttMessage)
+            }
     }
 }

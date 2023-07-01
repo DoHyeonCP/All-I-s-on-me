@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="70dp"
     app:contentInsetStart="0dp"
-    android:background="#10316B">
+    android:background="#10316B"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -40,6 +41,7 @@
             android:layout_height="60dp"
             android:layout_marginTop="5dp"
             app:srcCompat="@drawable/congestionlogo" />
+
 
     </RelativeLayout>
 
