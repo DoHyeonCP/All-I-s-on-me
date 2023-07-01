@@ -17,7 +17,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Scatter">
+        android:theme="@style/Theme.Scatter"
+        android:enableOnBackInvokedCallback="true">
         <service android:name = "org.eclipse.paho.android.service.MqttService"/>
 
 
@@ -31,26 +32,24 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <service android:name=".FirebaseMessagingService"
             android:exported="true">
             <intent-filter>
-
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
-
         </service>
 
-        <service android:name=".MyFirebaseMessagingService"
-            android:exported="true">
 
-            <intent-filter>
-
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-            </intent-filter>
-        </service>
         <activity
             android:name=".CongetionPrediction"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Scatter">
+        </activity>
+        <activity
+            android:name=".LoginActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Scatter">

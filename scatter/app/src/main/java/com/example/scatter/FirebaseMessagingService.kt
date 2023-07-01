@@ -17,6 +17,7 @@ class FirebaseMessagingService : FirebaseMessagingService(){
     private val TAG = "FirebasemsgService"
     private var msg: String? = null
     private var title: String? = null
+    var firebasetoken = ""
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         Log.e(TAG, "onMessageRecived")
@@ -52,4 +53,10 @@ class FirebaseMessagingService : FirebaseMessagingService(){
     }
 
     val WearableExtender = NotificationCompat.WearableExtender()
+
+    override fun onNewToken(token: String) {
+        super.onNewToken(token)
+
+        firebasetoken = token
+    }
 }
