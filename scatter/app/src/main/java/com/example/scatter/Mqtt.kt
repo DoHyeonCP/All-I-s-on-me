@@ -1,6 +1,7 @@
 package com.example.scatter
 
 import android.util.Log
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.firestore.auth.FirebaseAppCheckTokenProvider
 import com.google.firebase.iid.FirebaseInstanceIdReceiver
 import com.google.firebase.iid.internal.FirebaseInstanceIdInternal

@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.media.RingtoneManager
 import android.util.Log
 
@@ -17,7 +18,6 @@ class FirebaseMessagingService : FirebaseMessagingService(){
     private val TAG = "FirebasemsgService"
     private var msg: String? = null
     private var title: String? = null
-    var firebasetoken = ""
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         Log.e(TAG, "onMessageRecived")
@@ -35,14 +35,18 @@ class FirebaseMessagingService : FirebaseMessagingService(){
             PendingIntent.FLAG_IMMUTABLE // 뭔가 이상함
         )
 
+        val pushicon = BitmapFactory.decodeResource(resources, R.drawable.congestion_emo)
+        val WearableExtender = NotificationCompat.WearableExtender()
         val mBuilder = NotificationCompat.Builder(this, "channal_id")
-            .setSmallIcon(R.mipmap.ic_launcher)
+            .setSmallIcon(R.drawable.congestion_emo)
             .setContentTitle(title)
             .setContentText(msg)
             .setAutoCancel(true)
+            .setLargeIcon(pushicon)
             .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
             .setVibrate(longArrayOf(1,1000))
             .extend(WearableExtender)
+
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
@@ -52,11 +56,7 @@ class FirebaseMessagingService : FirebaseMessagingService(){
         mBuilder.setContentIntent(contentIntent)
     }
 
-    val WearableExtender = NotificationCompat.WearableExtender()
+    var WearableExtender = NotificationCompat.WearableExtender()
 
-    override fun onNewToken(token: String) {
-        super.onNewToken(token)
 
-        firebasetoken = token
-    }
 }

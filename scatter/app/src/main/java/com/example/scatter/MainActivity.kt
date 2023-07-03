@@ -117,31 +117,29 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        navigationView.setNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.lotteWorld -> {
-                    // 설정 항목 클릭 처리
-                val intent = Intent(this@MainActivity, LoginActivity::class.java)
-                startActivity(intent)
-                    true
-                }
-
-                R.id.lotteWorld -> {
-                    // 롯데월드 항목 클릭 처리
-                    true
-                }
-
-                R.id.lotteAround -> {
-                    // 롯데월드 주변 항목 클릭 처리
-                    true
-                }
-                // 다른 항목들에 대한 처리 추가
-                else -> false
-            }
-        }.also { _ ->
-
-            drawerLayout.closeDrawer(Gravity.LEFT)
-        }
+//        navigationView.setNavigationItemSelectedListener { menuItem ->
+//            when (menuItem.itemId) {
+//                R.id.lotteWorld -> {
+//                    // 설정 항목 클릭 처리
+//                    true
+//                }
+//
+//                R.id.lotteWorld -> {
+//                    // 롯데월드 항목 클릭 처리
+//                    true
+//                }
+//
+//                R.id.lotteAround -> {
+//                    // 롯데월드 주변 항목 클릭 처리
+//                    true
+//                }
+//                // 다른 항목들에 대한 처리 추가
+//                else -> false
+//            }
+//        }.also { _ ->
+//
+//            drawerLayout.closeDrawer(Gravity.LEFT)
+//        }
     }
 
 
