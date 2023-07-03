@@ -15,19 +15,19 @@ import com.example.scatter.databinding.ToolbarBinding
 class CongetionPrediction : AppCompatActivity() {
     private lateinit var predictionBinding: CongetionPredictionBinding
     private lateinit var webView : WebView
-    private lateinit var toolbarbinding: ToolbarBinding
-    private lateinit var toolbar: Toolbar
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
 
-        toolbarbinding = ToolbarBinding.inflate(layoutInflater)
-        toolbar = toolbarbinding.root
+
+
         predictionBinding = CongetionPredictionBinding.inflate(layoutInflater)
 
         setContentView(predictionBinding.root)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(findViewById(R.id.main_toolbar))
+
 
         webView = predictionBinding.predictionGraph
         webView.settings.javaScriptEnabled = true

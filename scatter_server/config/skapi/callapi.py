@@ -40,18 +40,50 @@ def sk_api_pois_congetion(poiid):
     )
     json_obj.save()
 
-def sk_api_areas_congetion(areaid):
+
+
+
+def sk_api_areas_congetion(areaid, area_n):
     app_key = settings.SK_APP_KEY
     json_data = SkOpenApi(f'https://apis.openapi.sk.com/puzzle/place/congestion/rltm/areas/{areaid}?appkey={app_key}')
-    
+    areapashing(json_data, area_n)
+
     json_obj = SKJsonAreasData(
         sk_areas_data = json_data
     )
     json_obj.save()
     
-def parsing(jsonfile):
-    jsonObject = json.loads(jsonfile)
-    area_id = 
+sk_songpagu_areas_id = ["9270", "9272", "9273"]
+# 롯데월드어드벤처, 롯데월드잠실점, 롯데백화점잠실점, 롯데마트제타플레
+sk_songpagu_pois_id = ["6967166","187691","188485","188592","5783805","5799875","384515","188633"]
+def get_sk_hotspots(request):
+	print("success")
+	while True:
+		for sk_areaid in sk_songpagu_areas_id:
+			sk_api_areas_congetion(sk_areaid)
+		print("sk_area_finish")
+		for sk_poiid in sk_songpagu_pois_id:
+			sk_api_pois_congetion(sk_poiid)
+		print("sk_poi_finish")
+		
+def areapashing(json):
+	jsonobject = json.loads(json)
+	area= jsonobject.get("contents").get("areaname")
+	congestion = jsonobject.get("contents").get("rltm").get("congestionLevel")
+	datetime = jsonobject.get("contents").get("rltm").get("datetime")
+	data = (area, congestion, datetime)
+	
+	
+    
+
+def poipshing(json):
+	jsonobject = json.loads(json)
+	poi = jsonobject.get("contents").get("poiname")
+	congestion = jsonobject.get("contents").get("rltm").get("congestionLevel")
+	datetime = jsonobject.get("contents").get("rltm").get("datetime")
+	
+	
+
 # def sk_api_pois_areas_congetion(poiid = None, areaid = None):
 #     app_key = settings.SK_APP_KEY
 #     areas_json_data = SkOpenApi(f'https://apis.openapi.sk.com/puzzle/place/congestion/stat/raw/hourly/areas/{areaid}?appkey={app_key}')

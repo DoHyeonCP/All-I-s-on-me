@@ -2,35 +2,33 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/nav_settings"
-        android:title="사용설명"
+    <group android:checkableBehavior="single">
+<!--        <item-->
+<!--            android:id="@+id/nav_settings"-->
+<!--            android:title="사용설명" />-->
+        <item
+            android:id="@+id/lotteWorld"
+            android:title="롯데월드"            />
+        <item
+            android:id="@+id/bangiDong"
+            android:title="방이동먹자골목" />
+        <item
+            android:id="@+id/lottedpartment"
+            android:title="롯데백화점" />
+        <item
+            android:id="@+id/zplanet"
+            android:title="롯데마트제타플레닛" />
+        <item
+            android:id="@+id/avenuelJamsil"
+            android:title="에비뉴엘월드타워점"
+            app:showAsAction="always"/>
+        <item
+            android:id="@+id/lotteWorldmall"
+            android:title="롯데월드몰" />
 
-        app:showAsAction="always"/>
-    <item
-        android:id="@+id/lotteWorld"
-        android:title="롯데월드"
-        app:showAsAction="always"/>
-    <item
-        android:id="@+id/lotteAround"
-        android:title="롯데월드 주변"
-        app:showAsAction="always"/>
-    <item
-        android:id="@+id/avenuelJamsil"
-        android:title="에비뉴엘 잠실점"
-        app:showAsAction="always"/>
-    <item
-        android:id="@+id/lotteWorldMall"
-        android:title="롯데월드몰"
-        app:showAsAction="always"/>
-    <item
-        android:id="@+id/bangiDong"
-        android:title="방이동 먹자골목"
-        app:showAsAction="always"/>
-
-    <item
-        android:id="@+id/oplmpic_park"
-        android:title="올림픽공원"
-        app:showAsAction="always"/>
+        <item
+            android:id="@+id/oplmpicPark"
+            android:title="올림픽공원" />
+    </group>
 
 </menu>

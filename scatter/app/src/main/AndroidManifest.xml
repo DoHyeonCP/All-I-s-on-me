@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -18,10 +19,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/Theme.AppCompat"
         android:enableOnBackInvokedCallback="true">
         <service android:name = "org.eclipse.paho.android.service.MqttService"/>
-
 
         <activity
             android:name=".MainActivity"
@@ -35,15 +35,30 @@
             </intent-filter>
 
         </activity>
+
         <service android:name=".FirebaseMessagingService"
             android:exported="true">
             <intent-filter>
+<<<<<<< HEAD
                 <action android:name="com.google.firebase.MESSAGING_EVENT"
                     />
             </intent-filter>
         </service>
 
 
+=======
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <service android:name=".MyFirebaseMessagingService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+
+>>>>>>> bc27729b2e81cf02a2b0e400afd3bdb6d6e69a28
         <activity
             android:name=".CongetionPrediction"
             android:exported="true"

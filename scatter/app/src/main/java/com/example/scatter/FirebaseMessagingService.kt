@@ -32,7 +32,7 @@ class FirebaseMessagingService : FirebaseMessagingService(){
             this,
             0,
             Intent(this, MainActivity::class.java),
-            PendingIntent.FLAG_IMMUTABLE // 뭔가 이상함
+            PendingIntent.FLAG_UPDATE_CURRENT// 뭔가 이상함
         )
 
         val pushicon = BitmapFactory.decodeResource(resources, R.drawable.congestion_emo)

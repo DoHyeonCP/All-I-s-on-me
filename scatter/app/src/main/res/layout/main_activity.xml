@@ -3,9 +3,46 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id = "@+id/drawblelayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- 상단 바 -->
+        <include layout= "@layout/main_layout" />
+
+        <!-- 텍스트뷰 -->
+
+
+        <ImageView
+            android:id="@+id/jamsil_map"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:scaleType = "fitXY"
+            app:srcCompat="@drawable/jamsil_map" />
+
+        <TextView
+            android:id="@+id/textbody"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:text="기본 텍스트" />
+        <Button
+            android:id="@+id/prediction"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#E25822"
+            android:text="예측된 인구혼잡 결과 보러가기"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation"
@@ -17,71 +54,17 @@
 
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
+<!--        <TextView-->
+<!--            android:id="@+id/text_body"-->
+<!--            android:layout_width="280dp"-->
+<!--            android:layout_height="160dp"-->
+<!--            android:layout_marginEnd="56dp"-->
+<!--            android:layout_marginBottom="112dp"-->
+<!--            android:text="TextView"-->
+<!--            android:textSize="20dp"-->
+<!--            android:textStyle="bold" />-->
 
-        <ImageView
-            android:id="@+id/jamsil_map"
-            android:layout_width="390dp"
-            android:layout_height="409dp"
-            android:layout_marginTop="70dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/jamsil_map" />
-
-
-        <Button
-            android:id="@+id/prediction"
-            android:layout_width="410dp"
-            android:layout_height="72dp"
-            android:layout_marginBottom="16dp"
-            android:background="#E25822"
-            android:text="예측된 인구혼잡 결과 보러가기"
-            android:textColor="@color/white"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/text_body"
-            android:layout_width="280dp"
-            android:layout_height="160dp"
-            android:layout_marginEnd="56dp"
-            android:layout_marginBottom="112dp"
-            android:text="TextView"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <!--        <ImageView-->
-        <!--            android:id="@+id/imageView4"-->
-        <!--            android:layout_width="54dp"-->
-        <!--            android:layout_height="64dp"-->
-        <!--            app:srcCompat="@drawable/exit_unvisible"-->
-        <!--            tools:layout_editor_absoluteX="341dp"-->
-        <!--            tools:layout_editor_absoluteY="87dp" />-->
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
-        <include
-            android:id="@+id/include"
-            layout="@layout/toolbar" />
-    </LinearLayout>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

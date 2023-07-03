@@ -20,7 +20,7 @@ class LocationInfo{
     fun startLocationService(locationManager : LocationManager){
         try{
             var location: Location? = null
-            val minTime: Long = 1000
+            val minTime: Long = 10000
             val minDistance = 1f
 
             gpsListener = GPSListener()

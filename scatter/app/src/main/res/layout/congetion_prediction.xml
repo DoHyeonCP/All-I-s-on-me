@@ -6,6 +6,25 @@
     android:layout_height="wrap_content"
     tools.context = ".CongetionPrediction">
 
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar" />
+
+        <WebView
+            android:id="@+id/prediction_graph"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation"
         android:layout_width="wrap_content"
@@ -14,35 +33,6 @@
         app:headerLayout="@layout/toolbar_head"
         app:menu="@menu/menu_navigation"/>
 
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="70dp">
-
-        <include
-            android:id="@+id/include"
-            layout="@layout/toolbar" />
-
-        <WebView
-            android:id="@+id/prediction_graph"
-            android:layout_width="400dp"
-            android:layout_height="261dp"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="5dp"
-            tools:layout_editor_absoluteY="159dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="70dp"-->
-<!--        android:orientation="vertical"-->
-<!--        tools:layout_editor_absoluteX="0dp"-->
-<!--        tools:layout_editor_absoluteY="0dp">-->
-
-<!--        -->
-<!--    </LinearLayout>-->
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
