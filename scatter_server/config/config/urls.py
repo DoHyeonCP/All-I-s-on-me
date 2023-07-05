@@ -17,11 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from skapi.views import get_sk_hotspots
-# from forecast.views import *
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-sk/', get_sk_hotspots),
-    # path('lotteworldforecast/', lotteworld_forcast),
 ]

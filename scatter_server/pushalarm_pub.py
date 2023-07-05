@@ -15,7 +15,7 @@ def pushalarm(area, firebasetoken):
     message = messaging.Message(
             notification=messaging.Notification(
                     title= '위험',
-                    body = f'사람이 많은 ${area} 근처입니다.',
+                    body = f'사람이 많은 {area} 근처입니다.',
             ),
             token = registration_token,
         )
