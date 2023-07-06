@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.http.SslError
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
 import android.view.View
 import android.webkit.SslErrorHandler
 import android.webkit.WebSettings
@@ -21,6 +22,11 @@ import androidx.appcompat.widget.Toolbar
 import androidx.compose.ui.graphics.Color
 import com.example.scatter.databinding.CongetionPredictionBinding
 import com.example.scatter.databinding.ToolbarBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class CongetionPrediction : AppCompatActivity() {
     private lateinit var predictionBinding: CongetionPredictionBinding
@@ -29,6 +35,7 @@ class CongetionPrediction : AppCompatActivity() {
     private lateinit var graphview1 : ImageView
     private lateinit var graphview2 : ImageView
     private lateinit var backButton : ImageButton
+    private lateinit var imageapiservice : ImageApiService
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_Scatter)
         super.onCreate(savedInstanceState)
@@ -36,6 +43,8 @@ class CongetionPrediction : AppCompatActivity() {
         predictionBinding = CongetionPredictionBinding.inflate(layoutInflater)
 
         setContentView(predictionBinding.root)
+
+
 
         backButton = predictionBinding.backButton
 
@@ -108,6 +117,35 @@ class CongetionPrediction : AppCompatActivity() {
             "올림픽공원" -> R.drawable.oplimpicpark
             else -> R.drawable.whitescreen // 기본 이미지 리소스 ID
         }
+    }
+
+
+    fun call롯데월드그래프(){
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://115.21.135.45:8000/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        imageapiservice = retrofit.create(ImageApiService::class.java)
+
+        val call = imageapiservice.getImage()
+        call.enqueue(object : Callback<HotSpot_forecast_image> {
+            override fun onResponse(call: Call<HotSpot_forecast_image>, response: Response<HotSpot_forecast_image>) {
+                if (response.isSuccessful) {
+                    val hotspotforecatimage = response.body()
+                    if(hotspotforecatimage != null){
+                        val name = hotspotforecatimage.name
+                        val image = hotspotforecatimage.path
+                    }
+                } else{
+                    Log.e("API Error", "Request failed with code: ${response.code()}")
+                }
+            }
+            override fun onFailure(call: Call<HotSpot_forecast_image>, t: Throwable) {
+                // API 요청 실패 처리
+                t.printStackTrace()
+            }
+        })
+
     }
 
 
