@@ -1,9 +1,20 @@
-마무리 남은 것
-1. 안드로이드 hardcode 없애기(보안을 위해)
-2. Djnago image json 파일혁식 지역이름 하위에 경로가 나오게하기
-3. Android Studio 이미지가져와서 드롭다운 지역 설정시 서버에서 JsonResponse된  name/path parshing해서 ImageView 띄우도록 수정하기(congestionpredistion/downloadfile, URlconnction vs Retrofit)
-4. AI 코드 Djnago의 app으로 만들기(sk api 불러오는 것이 중복됨으로 비효율)
+## 붐비미
+교통 약자를 위한 혼잡도 알림 서비스
 
+![image](https://github.com/DoHyeonCP/All-I-s-on-me/assets/119473997/7395b09e-3895-4ea3-814a-b6bb1e6d10e6)
+
+
+### 주요기능
+1. 실시간 혼잡도 확인하기
+   
+![image](https://github.com/DoHyeonCP/All-I-s-on-me/assets/119473997/55e6af7d-16b9-4ac5-9bda-3bf75b734350)
+
+2. 혼잡도 예측그래프 확인하기
+![image](https://github.com/DoHyeonCP/All-I-s-on-me/assets/119473997/b941781b-6bad-4f32-92f3-c4053bf18b1f)
+
+3. Push 알림
+   
+![image](https://github.com/DoHyeonCP/All-I-s-on-me/assets/119473997/3b86dc93-34cf-4c3d-95d2-57ae982e39ac)
 
 AI 전달내용
 --Python 3.7.10
