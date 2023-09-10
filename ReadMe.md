@@ -22,7 +22,8 @@
 ![image](https://github.com/DoHyeonCP/All-I-s-on-me/assets/119473997/b941781b-6bad-4f32-92f3-c4053bf18b1f)
 
 #### 3. Push 알림
-      - 혼잡한 지역 근처에 도착 시 Push 알람
+   - 혼잡한 지역 근처에 도착 시 Push 알람
+
 ![image](https://github.com/DoHyeonCP/All-I-s-on-me/assets/119473997/3b86dc93-34cf-4c3d-95d2-57ae982e39ac)
 
 
