@@ -1,5 +1,5 @@
 from haversine import haversine
-from pushalarm_pub import *
+from mqtt_umcomfortable.pushalarm_pub import *
 # 지역들의 중심 좌표의 이중배열만들기
 # coordinate['롯데마트제타플렉스점'] = (37.511612, 127.096311)
 # coordinate['롯데백화점잠실점'] = (37.512160, 127.099437)
