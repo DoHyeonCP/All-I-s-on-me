@@ -26,13 +26,21 @@ SECRET_KEY = 'django-insecure-b%^!xbrb*ufd95og0lr9twt4kz*p+jhl=ju!-noh*xo_*e!vhb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#######################################################
+# openApi
+SEOUL_API_KEY = '674b6c5377656867393341724f6477'
+SK_APP_KEY = 'BFE8BDtYZK553WvHLrnHxagtLvBEypDq9ClJQpAs'
+# SK_APP_KEY = 'BFE8BDtYZK553WvHLrnHxagtLvBEypDq9ClJQpAs' # 테슽트용 여분의 키
+# 잠실역, 잠실역 롯데월드, 방이동 먹자골목
+sk_songpagu_areas_id = ["9273", "9270"]
+# 롯데월드어드벤처, 롯데월드잠실점, 롯데백화점잠실점, 롯데마트제타플레
+sk_songpagu_pois_id = ["5783805", "5799875", "188633"]
+
+#######################################################
+
 # plus ec2_elastic_ip
 ALLOWED_HOSTS = ['*'] #anybody
 
-SEOUL_API_KEY = '674b6c5377656867393341724f6477'
-SK_APP_KEY = 'BFE8BDtYZK553WvHLrnHxagtLvBEypDq9ClJQpAs'
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -42,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'skapi',
+    'forcast',
     'rest_framework',
 ]
 
