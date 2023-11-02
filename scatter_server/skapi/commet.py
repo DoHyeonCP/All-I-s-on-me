@@ -114,3 +114,50 @@
 # SK_APP_KEY = 'W9DXjZKgAg4bVZwjN90m14SxPppyMoRzcYiBAB72'
 # SK_APP_KEY = 'Tt3yyROHTM8op2hEyv1Z34AXC2x8KPbn1iuD5Hlc'
 
+# self.areainfo = {"롯데월드": { # 전송할 데이터를 담을 dict
+#         "datetime" : "",
+#         "congestion_level" : 0
+#             }, 
+#             "방이동먹자골목":{
+#                 "datetime" : "",
+#                 "congestion_level" : 0
+                
+#             },
+#             "에비뉴엘월드타워점":{
+#                 "datetime" : "",
+#         "congestion_level" : 0
+                
+#             }, 
+#             "롯데월드몰":{
+#                 "datetime" : "",
+#         "congestion_level" : 0
+#             }, 
+#             "올림픽공원":{
+#                 "datetime" : "",
+#         "congestion_level" : 0
+#             }}
+
+# Create your models here.
+# class SkJsonPoisData(models.Model): # 지역
+#     sk_pois_data = models.JSONField()
+#     created_at = models.DateTimeField(auto_now_add = True)
+    
+# class SKJsonAreasData(models.Model): #상권
+#     sk_areas_data = models.JSONField()
+#     created_at = models.DateTimeField(auto_now_add = True)
+
+    # def sk_open_api(self, url): # json serialize
+    #     response = requests.get(url)
+    #     hotspots_data = response.content.decode('utf-8')
+    #     json_data = json.loads(hotspots_data)
+    #     return json_data
+
+    # def get_sk_hotspots(request):
+    #     print("success")
+    #     while True:
+    #         for sk_areaid in self.sk_songpagu_areas_id:
+    #             self.sk_api_areas_congetion(sk_areaid)
+    #         print("sk_area_finish")
+    #         for sk_poiid in self.sk_songpagu_pois_id:
+    #             self.sk_api_pois_congetion(sk_poiid)
+    #         print("sk_poi_finish")

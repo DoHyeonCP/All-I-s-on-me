@@ -1,10 +1,9 @@
 from django.db import models
 
-# Create your models here.
-class SkJsonPoisData(models.Model): # 지역
-    sk_pois_data = models.JSONField()
-    created_at = models.DateTimeField(auto_now_add = True)
-    
-class SKJsonAreasData(models.Model): #상권
-    sk_areas_data = models.JSONField()
-    created_at = models.DateTimeField(auto_now_add = True)
+class AreaInfo(models.Model):
+    area_name = models.CharField(max_length=100, unique=True)
+    datetime = models.DateTimeField()
+    congestion_level = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.area_name
