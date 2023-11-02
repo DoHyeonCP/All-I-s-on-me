@@ -24,6 +24,6 @@ from forcast.views import export_images_as_json
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-sk/', get_sk_hotspots),
+    path('api-sk/', get_sk_hotspots, name='get_sk_hotspots'),
     path('forecastimages/', export_images_as_json),
 ] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

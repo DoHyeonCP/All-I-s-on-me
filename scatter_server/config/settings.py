@@ -31,6 +31,7 @@ DEBUG = True
 SEOUL_API_KEY = '674b6c5377656867393341724f6477'
 SK_APP_KEY = 'BFE8BDtYZK553WvHLrnHxagtLvBEypDq9ClJQpAs'
 # SK_APP_KEY = 'BFE8BDtYZK553WvHLrnHxagtLvBEypDq9ClJQpAs' # 테슽트용 여분의 키
+
 # 잠실역, 잠실역 롯데월드, 방이동 먹자골목
 sk_songpagu_areas_id = ["9273", "9270"]
 # 롯데월드어드벤처, 롯데월드잠실점, 롯데백화점잠실점, 롯데마트제타플레
@@ -140,12 +141,23 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Redis
+# REDIS_HOST = os.getenv('REDIS_HOST')
+# REDIS_PORT = os.getenv('REDIS_PORT')
+# REDIS_PORT_SYSTEM = os.getenv('REDIS_PORT_SYSTEM')
+# REDIS_PW = os.getenv('REDIS_PW')
+
+# Celery
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Seoul'
 
 CELERY_BEAT_SCHEDULE = {
-    'update_seoul_hotspots': {
-        'task': 'your_app.tasks.update_seoul_hotspots',
-        'schedule': 60,  # 60 * 60  == 1 hours
+    'periodic_upadate_congetion_data': {
+        'task': 'skapi.task.periodic_upadate_congetion_data',
+        'schedule': 60*60,  # 60 * 60  == 1 hours
     },
 }

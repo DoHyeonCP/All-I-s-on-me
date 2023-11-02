@@ -1,49 +1,71 @@
 #-*- coding: utf-8 -*-
 import requests
-import json
 from django.conf import settings
 from .models import AreaInfo
-from rest_framework.response import Response
 
+class SkCallCongestion():
+    def __init__(self):
+        self.api_parser = SkApiParsing()
 
-class CallApi(): 
-    def __init__(self): 
-        self.sk_songpagu_areas_id = ["9273", "9270"]
-        self.sk_songpagu_pois_id = ["5783805", "5799875", "188633"]
-
-    def sk_open_api(self, url): # json serialize
+    def get_api(self, url): # json serialize
         response = requests.get(url)
-        hotspots_data = response.content.decode('utf-8')
-        return hotspots_data.json()
-
-    def sk_api_pois_congetion(self, poiid):
-        app_key = settings.SK_APP_KEY
-        json_data = self.SkOpenApi(f'https://apis.openapi.sk.com/puzzle/place/congestion/rltm/pois/{poiid}?appkey={app_key}')
-        self.areapashing(json_data, area_n)
-        json_obj = SkJsonPoisData(
-            sk_pois_data = json_data
-        )
-        json_obj.save()
-
-    def sk_api_areas_congetion(self, areaid, area_n):
-        app_key = settings.SK_APP_KEY
-        json_data = self.SkOpenApi(f'https://apis.openapi.sk.com/puzzle/place/congestion/rltm/areas/{areaid}?appkey={app_key}')
-        self.areapashing(json_data, area_n)
-
-        json_obj = SKJsonAreasData(
-            sk_areas_data = json_data
-        )
-        json_obj.save()
+        if response.status_code == 200:
+            return response.json()
         
-            
-    def areapashing(self, json):
-        jsonobject = json.loads(json)
+        else:
+            print("fail call sk_api")
+
+    def pois_get(self, poiid):
+        app_key = settings.SK_APP_KEY
+        json_data = self.get_api(f'https://apis.openapi.sk.com/puzzle/place/congestion/rltm/pois/{poiid}?appkey={app_key}')
+        if json_data:
+            self.api_parser.pois_parsing(json_data)
+
+    def areas_get(self, areaid):
+        app_key = settings.SK_APP_KEY
+        json_data = self.get_api(f'https://apis.openapi.sk.com/puzzle/place/congestion/rltm/areas/{areaid}?appkey={app_key}')
+        if json_data:
+            self.api_parser.area_parsing(json_data)
+
+class SkApiParsing():
+    def area_parsing(self, json):
+        jsonobject = json
+
         area= jsonobject.get("contents").get("areaname")
-        congestion = jsonobject.get("contents").get("rltm").get("congestionLevel")
-        datetime = jsonobject.get("contents").get("rltm").get("datetime")
-        
+        rltm_data = jsonobject.get("contents").get("rltm")
+        congestion = rltm_data.get("congestionLevel")
+        datetime = rltm_data.get("datetime")
+
+        dateTimeFormat = self.datetime_format(datetime)
         congestion_level = self.renamelevel(congestion)
-        data = (area, congestion, datetime)
+        
+        if area and datetime and congestion_level:
+            json_obj = AreaInfo(area_name= area,
+                                datetime = dateTimeFormat,
+                                congestion_level = congestion_level)
+            json_obj.save()
+
+    def pois_parsing(self, json):
+        jsonobject = json
+
+        area= jsonobject.get("contents", {}).get("areaname")
+        rltm_data = jsonobject.get("contents", {}).get("rltm", {})
+        congestion = rltm_data.get("congestionLevel")
+        datetime = rltm_data.get("datetime")
+
+        dateTimeFormat = self.datetime_format(datetime)
+        congestion_level = self.renamelevel(congestion)
+        
+        if area and datetime and congestion_level:
+            json_obj = AreaInfo(area_name= area,
+                                datetime = dateTimeFormat,
+                                congestion_level = congestion_level)
+            json_obj.save()
+
+    def datetime_format(self, datetime):
+        y, M, d, h, m, s = datetime[:4],datetime[4:6],datetime[6:8],datetime[8:10],datetime[10:12],datetime[12:]
+        dateTimeFormat = f"{y}년{M}월{d}일 {h}.{m}.{s}"
+        return dateTimeFormat
         
 
     def renamelevel(self, congestion):
@@ -58,19 +80,3 @@ class CallApi():
         elif congestion > 0.4:
             return "매우혼잡"
 
-    def update_congestion_data(self):
-        
-        for sk_areaid in self.sk_songpagu_areas_id:
-            self.sk_api_areas_congestion(sk_areaid)
-        print("sk_area_finish")
-        for sk_poiid in self.sk_songpagu_pois_id:
-            self.sk_api_pois_congestion(sk_poiid)
-        print("sk_poi_finish")
-
-
-# 배치 작업에서 사용할 함수
-def update_congestion_data_batch():
-    AreaInfo.objects.All().delete()
-
-    api = CallApi()
-    api.update_congestion_data()
