@@ -3,7 +3,7 @@ import pandas as pd
 from model import Model
 from plot import visualize_future_data, visualize_areas
 
-if __name__=='__main__':
+def forcast_virtual():
     #모델 실행 model.py -> total_pred.csv 생성됨
     start_time=time.time()
     model=Model()

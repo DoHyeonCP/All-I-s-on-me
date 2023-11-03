@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from celery.schedules import crontab
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -135,8 +136,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_URL = '/AI_nodjango/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+MEDIA_URL = '/forcast_virtualization/images/'
+# 절대 경로 수정해야함
+MEDIA_ROOT = os.path.join(r'D:\toy_project\All-I-s-on-me\scatter_server\forcast\forcast_virtulization\images')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -158,10 +160,21 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Seoul'
 
 CELERY_BEAT_SCHEDULE = {
-    'periodic_update_congestion_data': {
+    # 8시부터 16시까지 매 2시간마다 실행 (8, 10, 12, 14 시)
+    'update_every_2_hours': {
         'task': 'skapi.tasks.periodic_update_congestion_data',
-        'schedule': 3600,  # 60 * 60  == 1 hours
-        'args':()
+        'schedule': crontab(hour='8,10,12,14'),
+        'args': ()
+    },
+    # 16시부터 22시까지 매시간 실행 (16, 17, 18, 19, 20, 21 시)
+    'update_every_hour': {
+        'task': 'skapi.tasks.periodic_update_congestion_data',
+        'schedule': crontab(hour='16-21'),
+        'args': ()
+    },
+    'run_ai': {
+        'task': 'forecast.forcast_virtualization.main.forcast_virtual',
+        'schedule': crontab(hour=0, minute=0),  # 매일 자정에 실행
     },
 }
 
@@ -170,7 +183,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'handlers': {
         'file': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.FileHandler',
             'filename': 'debug.log',
         },
@@ -178,7 +191,7 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['file'],
-            'level': 'DEBUG',
+            'level': 'ERROR',
             'propagate': True,
         },
     },
