@@ -29,7 +29,7 @@ DEBUG = True
 #######################################################
 # openApi
 SEOUL_API_KEY = '674b6c5377656867393341724f6477'
-SK_APP_KEY = 'BFE8BDtYZK553WvHLrnHxagtLvBEypDq9ClJQpAs'
+SK_APP_KEY = 'n9Zp1CDiUU1yfnZBuAjkS4uL8B8Bu96MKKQ71BT0'
 # SK_APP_KEY = 'BFE8BDtYZK553WvHLrnHxagtLvBEypDq9ClJQpAs' # 테슽트용 여분의 키
 
 # 잠실역, 잠실역 롯데월드, 방이동 먹자골목
@@ -50,9 +50,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'skapi',
+    'skapi.apps.SkapiConfig',
     'forcast',
     'rest_framework',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -150,14 +151,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Celery
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
-CELERY_ACCEPT_CONTENT = ['json']
+CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Seoul'
 
 CELERY_BEAT_SCHEDULE = {
-    'periodic_upadate_congetion_data': {
-        'task': 'skapi.task.periodic_upadate_congetion_data',
-        'schedule': 60*60,  # 60 * 60  == 1 hours
+    'periodic_update_congestion_data': {
+        'task': 'skapi.tasks.periodic_update_congestion_data',
+        'schedule': 10,  # 60 * 60  == 1 hours
     },
 }
+

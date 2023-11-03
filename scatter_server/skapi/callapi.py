@@ -2,6 +2,7 @@
 import requests
 from django.conf import settings
 from .models import AreaInfo
+import logging
 
 class SkCallCongestion():
     def __init__(self):
@@ -9,6 +10,7 @@ class SkCallCongestion():
 
     def get_api(self, url): # json serialize
         response = requests.get(url)
+        print(response)
         if response.status_code == 200:
             return response.json()
         
@@ -30,37 +32,49 @@ class SkCallCongestion():
 class SkApiParsing():
     def area_parsing(self, json):
         jsonobject = json
-
-        area= jsonobject.get("contents").get("areaname")
+        
+        area= jsonobject.get("contents").get("areaName")
         rltm_data = jsonobject.get("contents").get("rltm")
-        congestion = rltm_data.get("congestionLevel")
+        congestion = rltm_data.get("congestion")
         datetime = rltm_data.get("datetime")
 
         dateTimeFormat = self.datetime_format(datetime)
         congestion_level = self.renamelevel(congestion)
         
         if area and datetime and congestion_level:
-            json_obj = AreaInfo(area_name= area,
-                                datetime = dateTimeFormat,
-                                congestion_level = congestion_level)
-            json_obj.save()
+            try:
+                json_obj = AreaInfo(area_name= area,
+                                    datetime = dateTimeFormat,
+                                    congestion_level = congestion_level)
+                json_obj.save()
+            except Exception as e:
+                    # Handle any exceptions that occur during the save operation
+                    print(f"An error occurred while saving: {e}")
 
     def pois_parsing(self, json):
         jsonobject = json
 
-        area= jsonobject.get("contents", {}).get("areaname")
-        rltm_data = jsonobject.get("contents", {}).get("rltm", {})
-        congestion = rltm_data.get("congestionLevel")
-        datetime = rltm_data.get("datetime")
+        poi_name = jsonobject.get("contents").get("poiName")
+        rltm_list = jsonobject.get("contents").get("rltm", [])
 
-        dateTimeFormat = self.datetime_format(datetime)
-        congestion_level = self.renamelevel(congestion)
-        
-        if area and datetime and congestion_level:
-            json_obj = AreaInfo(area_name= area,
+        if rltm_list:  # Check if the list is not empty
+            rltm_data = rltm_list[0]  # Get the first item
+            congestion = rltm_data.get("congestion")
+            datetime_str = rltm_data.get("datetime")
+
+            dateTimeFormat = self.datetime_format(datetime_str)
+            congestion_level = self.renamelevel(congestion)
+            
+            if poi_name and dateTimeFormat and congestion_level is not None:
+                try:
+                    # Using update_or_create to avoid duplicate entries for the same area and datetime
+                    json_obj = AreaInfo(area_name= poi_name,
                                 datetime = dateTimeFormat,
                                 congestion_level = congestion_level)
-            json_obj.save()
+                    json_obj.save()
+                except Exception as e:
+                    # Handle any exceptions that occur during the save operation
+                    print(f"An error occurred while saving: {e}")
 
     def datetime_format(self, datetime):
         y, M, d, h, m, s = datetime[:4],datetime[4:6],datetime[6:8],datetime[8:10],datetime[10:12],datetime[12:]
@@ -80,3 +94,17 @@ class SkApiParsing():
         elif congestion > 0.4:
             return "매우혼잡"
 
+class UpdateSkAPi:
+    def __init__(self):
+        self.sk_songpagu_areas_id = ["9273", "9270"]
+        self.sk_songpagu_pois_id = ["5783805", "5799875", "188633"]
+        self.sk_call_congestion = SkCallCongestion()
+
+    def update_congestion_data(self):
+        # AreaInfo.objects.all().delete()
+        for sk_areaid in self.sk_songpagu_areas_id:
+            self.sk_call_congestion.areas_get(sk_areaid)
+        logging.info("save areas to AreaInfo")
+        for sk_poiid in self.sk_songpagu_pois_id:
+            self.sk_call_congestion.pois_get(sk_poiid)
+        logging.info("save pois to AreaInfo")
