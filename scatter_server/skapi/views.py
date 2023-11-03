@@ -12,7 +12,7 @@ def get_sk_hotspots(request):
         serializer = AreaInfoDataSerializer(areas, many = True)
         return Response(serializer.data)
     except Exception as e:
-        return Response({"error" "An error occurred"}, status= 500)
+        return Response({"error" "{e}" }, status= 500)
 
 
 

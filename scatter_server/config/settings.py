@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'forcast',
     'rest_framework',
     'django_celery_beat',
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [
@@ -159,7 +160,26 @@ CELERY_TIMEZONE = 'Asia/Seoul'
 CELERY_BEAT_SCHEDULE = {
     'periodic_update_congestion_data': {
         'task': 'skapi.tasks.periodic_update_congestion_data',
-        'schedule': 10,  # 60 * 60  == 1 hours
+        'schedule': 3600,  # 60 * 60  == 1 hours
+        'args':()
     },
 }
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}

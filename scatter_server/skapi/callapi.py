@@ -101,7 +101,6 @@ class UpdateSkAPi:
         self.sk_call_congestion = SkCallCongestion()
 
     def update_congestion_data(self):
-        # AreaInfo.objects.all().delete()
         for sk_areaid in self.sk_songpagu_areas_id:
             self.sk_call_congestion.areas_get(sk_areaid)
         logging.info("save areas to AreaInfo")
