@@ -61,7 +61,7 @@ class ScaffoldView{
                     coroutineScope = coroutineScope,
                     scaffoldState = scaffoldState,
                     onMenuItemClick = {menuItems ->
-                        viewModel.onMenuItemSelected(menuItems.name)
+                        viewModel.getCongestionData(menuItems.name)
                     }
                 ) },){
                 paddingValues -> content(paddingValues)

@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.data.api.ApiResponse
 import com.example.data.model.Congestion
 import com.example.scatter.R
 
@@ -33,18 +34,18 @@ class MainView: ComponentActivity() {
         val congestionData by mainViewModel.congestionData.observeAsState()
 
         // MyScaffoldLayout을 사용하여 UI를 구성합니다.
-        ScaffoldView().MyScaffoldLayout(onMenuItemClick = { selectedItem ->
+        ScaffoldView().MyScaffoldLayout(viewModel = mainViewModel,onMenuItemClick = { selectedItem ->
             // ViewModel을 통해 API를 호출합니다.
-            mainViewModel.onMenuItemSelected(selectedItem.name)
+            mainViewModel.getCongestionData(selectedItem.name)
 
-        }, viewModel = mainViewModel) { paddingValues ->
+        }) { paddingValues ->
             // 컨텐츠를 구성하는 나머지 부분입니다.
             Content(congestionData, paddingValues)
         }
     }
 
     @Composable
-    fun Content(congestionData: Congestion?, paddingValues: PaddingValues) {
+    fun Content(congestionData: ApiResponse?, paddingValues: PaddingValues) {
         Column(
             modifier = Modifier
                 .fillMaxSize()

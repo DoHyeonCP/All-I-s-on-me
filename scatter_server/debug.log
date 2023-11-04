@@ -4525,3 +4525,7 @@ Traceback (most recent call last):
              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 FileNotFoundError: [WinError 3] 지정된 경로를 찾을 수 없습니다: 'forcast_virtualization/images'
 "GET /api/songpa/congestion/forcast HTTP/1.1" 500 104313
+"PRI * HTTP/2.0" 505 -
+You're accessing the development server over HTTPS, but it only supports HTTP.
+You're accessing the development server over HTTPS, but it only supports HTTP.
+"PRI * HTTP/2.0" 505 -

@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.data.api.ApiResponse
-import com.example.data.api.ApiServiceManager
+import com.example.data.api.ApiService
 import com.example.data.model.Congestion
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -14,18 +14,21 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val apiServiceManager: ApiServiceManager
+    private val apiService: ApiService
 ) : ViewModel() {
 
-    private val _congestionData = MutableLiveData<Congestion>()
-    val congestionData: LiveData<Congestion> = _congestionData
+    private val _congestionData = MutableLiveData<ApiResponse>()
+    val congestionData: LiveData<ApiResponse> = _congestionData
 
-    init {
-        apiServiceManager.apiResult.observeForever {
-            _congestionData.value = it
+    fun getCongestionData(areaName: String) {
+        viewModelScope.launch {
+            try {
+                val dataList = apiService.getData()
+                val areaData = dataList.find { it.areaName == areaName }
+                _congestionData.value = areaData
+            } catch (e: Exception) {
+                // Handle errors
+            }
         }
-    }
-    fun onMenuItemSelected(areaName: String) {
-        apiServiceManager.callApi(areaName)
     }
 }

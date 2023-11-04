@@ -7,5 +7,4 @@ data class Congestion(
     val areaName: String,
     val congestionLevel: String,
     val datetime: String
-
 )

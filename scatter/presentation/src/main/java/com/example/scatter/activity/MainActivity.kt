@@ -37,7 +37,6 @@ import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.example.data.api.ApiService
-import com.example.data.api.ApiServiceManager
 import com.example.data.model.Congestion
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -54,8 +53,6 @@ import javax.inject.Inject
 class MainActivity: ComponentActivity(){
     private val mainViewModel: MainViewModel by viewModels()
 
-    @Inject
-    lateinit var apiServiceManager: ApiServiceManager
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -65,7 +62,7 @@ class MainActivity: ComponentActivity(){
                     modifier = Modifier.fillMaxSize(),
 
                     ) {
-                    MainView().Main(mainViewModel)
+                    MainView().Main(mainViewModel = mainViewModel)
                 }
             }
         }
