@@ -6,6 +6,7 @@
 #### 서버
 - Djangorestframework를 사용한 RESTFulAPI 구축
 - AI팀의 코드를 Django 프레임워크로 이식
+- while문을 사용한 api 반복호출 -> celery beat를 활용한 스케줄링
 
 #### 클라이언트
 - UI: XML -> Jetpackcompose로 전환 선언형 UI 구현
