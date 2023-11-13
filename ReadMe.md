@@ -20,6 +20,12 @@
 - Firebase를 제거한 효과: 자체 서버 인프라를 활용하는 현재의 시스템 구조에서 Firebase의 사용은 중복적인 기능을 제공함으로써 비용적 측면과 유지보수성의 부담을 증가시키므로 제거
 
 
+### forecast 구조 개선(진행중)
+- /data: api 호출, df적용, 시각화, 시각화 CRUD
+- /model: AI예측 모델, holiday_df, weather_df 는 model의 변수 데이터프레임
+- /value: 시각화된 png들 이거 static으로 옮겨야함
+- forcast_virtual: 예측 혼잡도 그래프 시각화 파일 저장하는 로직
+
 
 ### 추가적으로 남은 것
 - 테스트 추가(무엇을 테스트할지 결정하고 모두 결정하고 작성 시작하기)
@@ -31,6 +37,3 @@
 - 서버 배포(AWS EC2 등록해놓음, docker필요한지 고민)
 - 앱 Google Store에 등록
 
-### AI 코드수정을 위해 학습할 것
-학습할 자료들: 데이터 과학, 머신러닝, 시각화
-사용된 라이브러리: pandas, sklearn, Prophet, matplatlib

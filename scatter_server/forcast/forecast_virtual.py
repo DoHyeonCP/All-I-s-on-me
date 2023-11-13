@@ -1,12 +1,12 @@
 import time
 import pandas as pd
-from model import Model
-from plot import visualize_future_data, visualize_areas
+from model import ForecastModel
+from data.visualization import visualize_future_data, visualize_areas
 
-def forcast_virtual():
+def forecast_virtual():
     #모델 실행 model.py -> total_pred.csv 생성됨
     start_time=time.time()
-    model=Model()
+    model=ForecastModel()
     total_pred=model.total_predictions()
     print('Time:', time.time()-start_time)
 
@@ -23,8 +23,5 @@ def forcast_virtual():
     total_pred['level']=pd.cut(total_pred['yhat'], bins=bins, labels=labels)
     total_pred['num_level']=pd.cut(total_pred['yhat'], bins=bins, labels=num_labels)
     
-    #t+1~ 그래프 시각화, html_files와 images 폴더에 저장
+    #t+1~ images 폴더에 저장
     visualize_future_data(total_pred)
-    
-    #6개 장소 시각화
-    visualize_areas(total_pred)
