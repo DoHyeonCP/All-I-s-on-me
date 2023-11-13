@@ -1,12 +1,12 @@
 import pandas as pd
 import plotly.graph_objects as go
-import ImageDto
+from data import ImageStorageManager
 
 
 
 class Visualization():
     def __init__(self):
-        self.image_dto = ImageDto()
+        self.imagemanager = ImageStorageManager()
 
     def visualize_future_data(self, total_pred):
         # 날짜시간 타입으로 변경

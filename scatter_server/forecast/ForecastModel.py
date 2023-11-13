@@ -2,11 +2,9 @@ import pandas as pd
 from time import time
 import matplotlib.pyplot as plt
 from prophet import Prophet
-from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error
-
 from data.DataProcessor import train_dataset, create_features
-from weather_df import train_weather, test_weather
-from holiday_df import make_holiday_df
+from data.weather_api import train_weather, test_weather
+from data.holiday_api import make_holiday_df
 
 class ForecastModel():
     def __init__(self):
@@ -109,12 +107,3 @@ class SupportModel():
         predictions.sort_values(by=['ds','ticker'], inplace=True)
 
         return predictions
-
-    
-    
-
-if __name__=='__main__':
-    start_time=time()
-    model=ForecastModel()
-    total_pred=model.total_predictions()
-    print('Time:', time()-start_time)

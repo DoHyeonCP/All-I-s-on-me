@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'skapi.apps.SkapiConfig',
-    'forcast',
+    'forecast',
     'rest_framework',
     'django_celery_beat',
     'django_celery_results',

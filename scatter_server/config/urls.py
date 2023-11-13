@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path,include
 from skapi.views import get_sk_hotspots
-from forcast.views import image_list
+from forecast.views import image_list
 
 
 urlpatterns = [

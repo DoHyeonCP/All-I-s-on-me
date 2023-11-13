@@ -1,7 +1,7 @@
 import time
 import pandas as pd
-from model import ForecastModel
-from data.visualization import visualize_future_data, visualize_areas
+import ForecastModel
+from Visualization import visualize_future_data
 
 def forecast_virtual():
     #모델 실행 model.py -> total_pred.csv 생성됨
