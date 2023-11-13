@@ -7,7 +7,7 @@ def holiday_api(year):
     retry_delay=3
     
     for attempt in range(max_retries):
-        try:    
+        try:
             decoding_key='6tblOMEsON8DV8mDJwrWHEDqFscUjGc0P1JLpq5QZE8Y/7jyE2piugAbGHDiy4oKYwbAaLiP+i9L1wb3HZ9VnQ=='
             url = 'http://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getRestDeInfo'
             params ={'serviceKey' : decoding_key, 'pageNo' : '1', 'numOfRows' : '100', 'solYear' : str(year)}
@@ -20,7 +20,7 @@ def holiday_api(year):
         except Exception as e:
             print(f"An error occurred: {e}")
             print(f"Retrying ({attempt+1}/{max_retries}) in {retry_delay} seconds...")
-            time.sleep(retry_delay)
+            datetime.time.sleep(retry_delay)
         
         raise Exception("Exceeded maximum number of retries for train_weather()")
 

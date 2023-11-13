@@ -9,7 +9,7 @@ import os
 @api_view(['GET'])
 def image_list(request):
     # 이미지 파일 목록을 가져옵니다.
-    images_directory = settings.MEDIA_ROOT
+    images_directory = os.path.join(settings.MEDIA_ROOT, 'forcast_image')
     images = os.listdir(images_directory)
     image_data = []
     for image in images:

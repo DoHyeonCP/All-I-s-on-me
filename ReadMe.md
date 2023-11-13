@@ -30,3 +30,7 @@
 - Android WebView로 그래프 연결, Android Test코드 추가 (DI 적용했으니 테스트하기 쉬울꺼임)
 - 서버 배포(AWS EC2 등록해놓음, docker필요한지 고민)
 - 앱 Google Store에 등록
+
+### AI 코드수정을 위해 학습할 것
+학습할 자료들: 데이터 과학, 머신러닝, 시각화
+사용된 라이브러리: pandas, sklearn, Prophet, matplatlib
