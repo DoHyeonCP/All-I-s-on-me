@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forecast Images</title>
+    <style>
+        body {
+            text-align: center; /* 본문 내용을 가운데 정렬 */
+        }
+        .image-container {
+            display: inline-block; /* 이미지 컨테이너를 인라인 블록으로 설정 */
+            position: relative; /* 자식 요소인 이미지 이름을 절대 위치로 설정하기 위함 */
+            margin: 10px; /* 여백 추가 */
+        }
+        .image-name {
+            position: absolute; /* 이미지 이름을 절대 위치로 설정 */
+            top: 10px; /* 위쪽 여백 */
+            left: 0;
+            right: 0;
+            color: white; /* 텍스트 색상 */
+            background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+            padding: 5px; /* 패딩 추가 */
+        }
+        img {
+            display: block; /* 이미지를 블록 요소로 설정 */
+            margin-left: auto;
+            margin-right: auto; /* 좌우 마진 자동으로 설정하여 가운데 정렬 */
+            max-width: 100%; /* 화면 너비를 초과하지 않도록 설정 */
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <select id="dateSelector" onchange="filterImagesByDate()">
+        <option value="">모든 날짜 보기</option>
+        {% for _, date_str in images %}
+            <option value="{{ date_str }}">{{ date_str }}</option>
+        {% endfor %}
+    </select>
+
+    <!-- 이미지 컨테이너 -->
+    <div id="imageContainer">
+        {% for filename, date_str in images %}
+            <div class="image-container" data-date="{{ date_str }}">
+                <div class="image-name">{{ date_str }}</div>
+                <img src="{{ MEDIA_URL }}forecast_image/{{ filename }}" alt="{{ filename }}">
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        function filterImagesByDate() {
+            var selectedDate = document.getElementById('dateSelector').value;
+            var containers = document.querySelectorAll('.image-container');
+
+            containers.forEach(function(container) {
+                if (selectedDate === '' || container.getAttribute('data-date') === selectedDate) {
+                    container.style.display = 'inline-block';
+                } else {
+                    container.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

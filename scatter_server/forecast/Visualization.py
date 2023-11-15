@@ -1,12 +1,12 @@
 import pandas as pd
 import plotly.graph_objects as go
-from data import ImageStorageManager
+from data import ImageManager
 
 
 
 class Visualization():
     def __init__(self):
-        self.imagemanager = ImageStorageManager()
+        self.imagemanager = ImageManager()
 
     def visualize_future_data(self, total_pred):
         # 날짜시간 타입으로 변경
@@ -59,9 +59,4 @@ class Visualization():
                 image_filename = f"{ticker}_{pred.index[i].date().strftime('%m%d')}.png"
                 self.image_dto.save_fig_as_png(fig, image_filename)
                 print(f"Image saved: {image_filename}")
-                
-                #HTML로 저장
-                html_filename = f"{ticker}_{pred.index[i].date().strftime('%m%d')}.html"
-                self.image_dto.save_fig_as_html(fig, html_filename)
-                print(f"Image saved: {html_filename}")
 

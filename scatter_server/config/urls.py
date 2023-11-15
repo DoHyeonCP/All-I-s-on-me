@@ -19,11 +19,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path,include
 from skapi.views import get_sk_hotspots
-from forecast.views import image_list
+from forecast.views import forecast
+import os
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/songpa/congestion/realtime', get_sk_hotspots, name='get_sk_hotspots'),
-    path('api/songpa/congestion/forcast', image_list, name = 'image_list'),
-] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('api/songpa/congestion/realtime', get_sk_hotspots, name='realtime'),
+    path('media/forecast_image', forecast, name = 'forecast'),
+] +static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

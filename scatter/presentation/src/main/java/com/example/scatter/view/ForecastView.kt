@@ -20,7 +20,7 @@ import androidx.navigation.NavController
 class ForecastView() {
     @Composable
     fun Content(navController: NavController){
-        val url = "https://host/api/songpa/congestion/forecast"
+        val url = "http://192.168.0.4:8000/media/forecast_image"
 
         Column(){
             Row( // 상단의 뒤로가기 버튼
@@ -37,6 +37,8 @@ class ForecastView() {
 
             AndroidView(factory = {
                 WebView(it).apply{
+
+                    settings.javaScriptEnabled = true
                     layoutParams = ViewGroup.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.MATCH_PARENT

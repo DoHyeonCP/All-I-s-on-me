@@ -4529,3 +4529,221 @@ FileNotFoundError: [WinError 3] 지정된 경로를 찾을 수 없습니다: 'forcast_virtual
 You're accessing the development server over HTTPS, but it only supports HTTP.
 You're accessing the development server over HTTPS, but it only supports HTTP.
 "PRI * HTTP/2.0" 505 -
+Internal Server Error: /api/songpa/congestion/forcast
+Traceback (most recent call last):
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\forecast\views.py", line 7, in forecast
+    images = os.listdir(os.path.join(settings.MEDIA_ROOT, 'forecast_image'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] 지정된 경로를 찾을 수 없습니다: 'D:\\toy_project\\All-I-s-on-me\\scatter_server\\media\\forecast_image'
+"GET /api/songpa/congestion/forcast HTTP/1.1" 500 71729
+Internal Server Error: /api/songpa/congestion/forcast
+Traceback (most recent call last):
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\forecast\views.py", line 7, in forecast
+    images = os.listdir(os.path.join(settings.MEDIA_ROOT, 'forecast_image'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] 지정된 경로를 찾을 수 없습니다: 'D:\\toy_project\\All-I-s-on-me\\scatter_server\\media\\forecast_image'
+"GET /api/songpa/congestion/forcast HTTP/1.1" 500 71455
+Internal Server Error: /api/songpa/congestion/forecast
+Traceback (most recent call last):
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\forecast\views.py", line 7, in forecast
+    images = os.listdir(os.path.join(settings.MEDIA_ROOT, 'forecast_image'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] 지정된 경로를 찾을 수 없습니다: 'D:\\toy_project\\All-I-s-on-me\\scatter_server\\media\\forecast_image'
+"GET /api/songpa/congestion/forecast HTTP/1.1" 500 71465
+Internal Server Error: /api/songpa/congestion/forecast
+Traceback (most recent call last):
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\forecast\views.py", line 8, in forecast
+    return render(request, 'forecast.html', {'images': images})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: forecast.html
+"GET /api/songpa/congestion/forecast HTTP/1.1" 500 91759
+You're accessing the development server over HTTPS, but it only supports HTTP.
+You're accessing the development server over HTTPS, but it only supports HTTP.
+Internal Server Error: /api/songpa/congestion/forecast
+Traceback (most recent call last):
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\forecast\views.py", line 8, in forecast
+    images = [f for f in os.listdir(directory_path) if f.startswith('areas_') and f.endswith('.png')]
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] 지정된 경로를 찾을 수 없습니다: 'D:\\toy_project\\All-I-s-on-me\\scatter_server\\media\\forecast_image'
+"GET /api/songpa/congestion/forecast HTTP/1.1" 500 72131
+Internal Server Error: /api/songpa/congestion/forecast
+Traceback (most recent call last):
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\forecast\views.py", line 8, in forecast
+    images = [f for f in os.listdir(directory_path) if f.startswith('areas_') and f.endswith('.png')]
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] 지정된 경로를 찾을 수 없습니다: 'D:\\toy_project\\All-I-s-on-me\\scatter_server\\media\\forecast_image'
+"GET /api/songpa/congestion/forecast HTTP/1.1" 500 72206
+Internal Server Error: /api/songpa/congestion/forecast
+Traceback (most recent call last):
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\forecast\views.py", line 8, in forecast
+    images = [f for f in os.listdir(directory_path) if f.startswith('areas_') and f.endswith('.png')]
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] 지정된 경로를 찾을 수 없습니다: 'D:\\toy_project\\All-I-s-on-me\\scatter_server\\media\\forecast_image'
+"GET /api/songpa/congestion/forecast HTTP/1.1" 500 72197
+Internal Server Error: /media/
+Traceback (most recent call last):
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\forecast\views.py", line 13, in forecast
+    match = re.search(r'(\d{4})\.png', filename)
+            ^^
+NameError: name 're' is not defined
+"GET /media/ HTTP/1.1" 500 73072
+Internal Server Error: /media/
+Traceback (most recent call last):
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\forecast\views.py", line 13, in forecast
+    match = re.search(r'(\d{4})\.png', filename)
+            ^^
+NameError: name 're' is not defined
+"GET /media/ HTTP/1.1" 500 73072
+Internal Server Error: /media/
+Traceback (most recent call last):
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\forecast\views.py", line 18, in forecast
+    date_str = datetime.strptime(match.group(1), '%m%d').strftime('%-m월 %-d일')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Invalid format string
+"GET /media/ HTTP/1.1" 500 73268
+Internal Server Error: /media/
+Traceback (most recent call last):
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\forecast\views.py", line 18, in forecast
+    date_str = datetime.strptime(match.group(1), '%m%d').strftime('%-m월 %-d일')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Invalid format string
+"GET /media/ HTTP/1.1" 500 73268
+Internal Server Error: /media/
+Traceback (most recent call last):
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\forecast\views.py", line 18, in forecast
+    date_str = datetime.strptime(match.group(1), '%m%d').strftime('%-m월 %-d일')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Invalid format string
+"GET /media/ HTTP/1.1" 500 73268
+Internal Server Error: /media/
+Traceback (most recent call last):
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\forecast\views.py", line 18, in forecast
+    date_str = datetime.strptime(match.group(1), '%m%d').strftime('%-m월 %-d일')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Invalid format string
+"GET /media/ HTTP/1.1" 500 73268
+Internal Server Error: /media/
+Traceback (most recent call last):
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\forecast\views.py", line 18, in forecast
+    date_str = datetime.strptime(match.group(1), '%m%d').strftime('%-m월 %-d일')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Invalid format string
+"GET /media/ HTTP/1.1" 500 73268
+Internal Server Error: /media/
+Traceback (most recent call last):
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\forecast\views.py", line 18, in forecast
+    date_str = datetime.strptime(match.group(1), '%m%d').strftime('%-m월 %-d일')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Invalid format string
+"GET /media/ HTTP/1.1" 500 73268
+Internal Server Error: /media/
+Traceback (most recent call last):
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\scatter_venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\toy_project\All-I-s-on-me\scatter_server\forecast\views.py", line 18, in forecast
+    date_str = datetime.strptime(match.group(1), '%m%d').strftime('%-m월 %-d일')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Invalid format string
+"GET /media/ HTTP/1.1" 500 73268
