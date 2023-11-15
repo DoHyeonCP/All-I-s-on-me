@@ -1,4 +1,4 @@
-package com.example.scatter.activity
+package com.example.scatter.viewmodel
 
 sealed class MenuItems(val name: String) {
     object 롯데월드 : MenuItems("잠실역 롯데월드")

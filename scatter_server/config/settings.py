@@ -173,7 +173,7 @@ CELERY_BEAT_SCHEDULE = {
         'args': ()
     },
     'run_ai': {
-        'task': 'forecast.forcast_virtualization.main.forcast_virtual',
+        'task': 'forecast.tasks.run_forecast_virtual',
         'schedule': crontab(hour=0, minute=0),  # 매일 자정에 실행
     },
 }

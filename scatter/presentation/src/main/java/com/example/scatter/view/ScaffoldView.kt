@@ -1,4 +1,4 @@
-package com.example.scatter.activity
+package com.example.scatter.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -38,6 +38,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 import com.example.scatter.R
+import com.example.scatter.viewmodel.MainViewModel
+import com.example.scatter.viewmodel.MenuItems
 
 class ScaffoldView{
     @Composable
