@@ -2,13 +2,14 @@ import pandas as pd
 import requests
 from django.conf import settings
 
-api_keys=["j8VUTaKCsy9YwKQvy2FVR2fuz1HOvKdX8cWJFwDu","e8wHh2tya84M88aReEpXCa5XTQf3xgo01aZG39k5",
-         "w3oFktJUat2NPpDorwHZE7avbxcvdq0S7wx4vXfN","Tt3yyROHTM8op2hEyv1Z34AXC2x8KPbn1iuD5Hlc",
-         "RNM43SFreC8YwWjFIAGHY4VIpOi6jDHG98AHf7rN"]
+
 api_key_index=0
 
 #data 불러오기 - 1. Sk Api
 class sk_api():
+    def __init__(self):
+        self.app_keys = settings.SK_API_KEYS
+
     # 시간대별 혼잡도: 상권의 과거 30일 간의 일자/시간대별 혼잡도 호출
     def get_data_pois(self, date, df):
         # 장소 id 리스트
@@ -18,7 +19,7 @@ class sk_api():
         headers = {
             "accept": "application/json",
             "Content-Type": "application/json",
-            "appKey":api_keys[api_key_index]
+            "appKey":self.api_keys[api_key_index]
         }
         # API 응답 저장할 빈 딕셔너리 생성
         responses = {}
@@ -67,7 +68,7 @@ class sk_api():
         headers = {
             "accept": "application/json",
             "Content-Type": "application/json",
-            "appKey":api_keys[api_key_index]
+            "appKey":self.api_keys[api_key_index]
         }
 
         responses = {}
@@ -107,7 +108,7 @@ class sk_api():
     def switch_to_next_key(self):
         # 다음 API 키로 전환하는 함수
         global api_key_index
-        api_key_index = (api_key_index + 1) % len(api_keys)
+        api_key_index = (api_key_index + 1) % len(self.api_keys)
 
 
 class LoadDf():

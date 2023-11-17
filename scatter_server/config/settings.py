@@ -22,16 +22,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b%^!xbrb*ufd95og0lr9twt4kz*p+jhl=ju!-noh*xo_*e!vhb'
+SECRET_KEY = os.environ.get('SECRET_KEY', r"D:\toy_project\All-I-s-on-me")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 #######################################################
 # openApi
-SEOUL_API_KEY = '674b6c5377656867393341724f6477'
-SK_APP_KEY = 'n9Zp1CDiUU1yfnZBuAjkS4uL8B8Bu96MKKQ71BT0'
-# SK_APP_KEY = 'BFE8BDtYZK553WvHLrnHxagtLvBEypDq9ClJQpAs' # 테슽트용 여분의 키
+SEOUL_API_KEY = os.environ.get('SEOUL_API_KEY', r"D:\toy_project\All-I-s-on-me")
+SK_APP_KEY = os.environ.get('SK_APP_KEY', r"D:\toy_project\All-I-s-on-me")
+SK_APP_KEYS = os.environ.get('SK_APP_KEYS', r"D:\toy_project\All-I-s-on-me")
 
 # 잠실역, 잠실역 롯데월드, 방이동 먹자골목
 sk_songpagu_areas_id = ["9273", "9270"]
@@ -138,6 +138,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
